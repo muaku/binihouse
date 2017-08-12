@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>アグリプラン</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" href="./css/photon.css">
+  </head>
+  <body>
+
+
+<div class="window">
+
+  <header class="toolbar toolbar-header">
+    <h1 class="title">ビニルハウス</h1>
+  </header>
+  <div class="window-content">
+    <div class="pane-group">
+      <div class="pane-sm sidebar">
+        
+
+
+<nav class="nav-group">
+  <!-- <h5 class="nav-group-title">選択</h5> -->
+ <!--  <a class="nav-group-item active" id="settingNav">
+    設定
+  </a> -->
+  <span class="nav-group-item" id="dayNav">
+    1日
+  </span>
+  <span class="nav-group-item" id="weekNav">
+    1週間
+  </span>
+  <span class="nav-group-item" id="monthNav">
+    1ヶ月
+  </span>
+  <span class="nav-group-item" id="threemonthsNav">
+    3ヶ月
+  </span>
+  <span class="nav-group-item" id="sekisanNav">
+    積算温度
+  </span>
+  <span class="nav-group-item" id="nisshoujikanNav">
+    日照時間
+  </span>
+</nav>
+
+
+
+
+  </div>
+<div class="pane">
+        
+      
+
+<div id="wrapper">
+
+<!-- DAY PANE -->
+  <div id="dayPane">
+  
+  <div id="calendar">
+
+      <input type="date" name="daydate" id="daydate">
+      <button id="showGraphBtn" class="btn btn-primary">グラフ表示・更新</button>
+
+    <!-- <div id="showGraph">
+      
+    </div> -->
+
+    <!-- Port Setting -->
+    
+        <select id="portList">
+        </select>
+
+        <button id="startBtn" class="btn btn-positive">通信開始</button>
+        <button id="stopBtn" class="btn btn-negative">通信停止</button>
+        <span id="dataStatus"></span>
+        <span id="status"></span> 
+        
+    </div>
+
+
+    <div id="housachiChart" style="width:100%; height:200px;"></div>
+        
+    <div id="ondoChart" style="width:100%; height:300px;"></div>
+
+    <div id="shoudoChart" style="width:100%; height:200px;"></div>
+   
+    <div id="ameChart" style="width:100%; height:150px;"></div>
+      
+    <div id="mistChart" style="width:100%; height:150px;"></div>
+
+
+    <div id="fanChart">
+      <table align="center" id="fanChartTable">
+        <tr>
+          <td><div id="fan1Chart" style="width:100%; height:120px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="fan2Chart" style="width:100%; height:80px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="fan3Chart" style="width:100%; height:80px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="fan4Chart" style="width:100%; height:80px;"></div></td>
+        </tr>
+        </table>
+  </div>
+      
+
+  </div> 
+
+
+<!-- WEEK PANE -->
+<div id="weekPane" style="display: none;">
+  <input type="date" id="week_todate">
+  <!-- <div id="sekisanText">sekisanText</div> -->
+  <input type="button" name="week" id="week_kousin" value="グラフ表示・更新">
+
+  <div id="weekText"></div>
+
+  <div id="week_housachiChart" style="width:100%; height:200px;"></div>
+        
+    <div id="week_ondoChart" style="width:100%; height:300px;"></div>
+
+    <div id="week_shoudoChart" style="width:100%; height:200px;"></div>
+   
+    <div id="week_ameChart" style="width:100%; height:150px;"></div>
+      
+    <div id="week_mistChart" style="width:100%; height:150px;"></div>
+
+
+    <div id="week_fanChart">
+      <table align="center" id="fanChartTable">
+        <tr>
+          <td><div id="week_fan1Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="week_fan2Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="week_fan3Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="week_fan4Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        </table>
+  </div>
+
+</div>
+
+
+
+
+<!-- MONTH PANE -->
+<div id="monthPane" style="display: none;">
+  <div id="monthText"></div>
+
+  <div id="month_housachiChart" style="width:100%; height:200px;"></div>
+        
+    <div id="month_ondoChart" style="width:100%; height:300px;"></div>
+
+    <div id="month_shoudoChart" style="width:100%; height:200px;"></div>
+   
+    <div id="month_ameChart" style="width:100%; height:150px;"></div>
+      
+    <div id="month_mistChart" style="width:100%; height:150px;"></div>
+
+
+    <div id="month_fanChart">
+      <table align="center" id="fanChartTable">
+        <tr>
+          <td><div id="month_fan1Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="month_fan2Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="month_fan3Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="month_fan4Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        </table>
+  </div>
+
+</div>
+
+
+
+<!-- 3MONTH PANE -->
+<div id="threemonthsPane" style="display: none;">
+  <div id="threemonthsText"></div>
+
+  <div id="threemonths_housachiChart" style="width:100%; height:200px;"></div>
+        
+    <div id="threemonths_ondoChart" style="width:100%; height:300px;"></div>
+
+    <div id="threemonths_shoudoChart" style="width:100%; height:200px;"></div>
+   
+    <div id="threemonths_ameChart" style="width:100%; height:150px;"></div>
+      
+    <div id="threemonths_mistChart" style="width:100%; height:150px;"></div>
+
+
+    <div id="threemonths_fanChart">
+      <table align="center" id="fanChartTable">
+        <tr>
+          <td><div id="threemonths_fan1Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="threemonths_fan2Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="threemonths_fan3Chart" style="width:100%; height:70px;"></div></td>
+        </tr>
+        <tr>
+          <td><div id="threemonths_fan4Chart" style="width:100%; height:100px;"></div></td>
+        </tr>
+        </table>
+  </div>
+
+</div>
+
+
+<!-- sekisan PANE -->
+<div id="sekisanPane" style="display: none;">
+  <input type="date" id="sekisan_fromdate"> -  <input type="date" id="sekisan_todate">
+  <!-- <div id="sekisanText">sekisanText</div> -->
+  <input type="button" name="sekisan-kousin" id="sekisan-kousin" value="グラフ表示・更新">
+
+  <div id="sekisanOndoChart" style="width:100%; height:500px;"></div>
+        
+</div>
+
+
+<!-- nisshoujikan PANE -->
+<div id="nisshoujikanPane" style="display: none;">
+  <input type="date" id="nisshou_fromdate"> -  <input type="date" id="nisshou_todate">
+  <input type="button" name="nishou-kousin" id="nishou-kousin" value="グラフ表示・更新">
+  <!-- <div id="nisshoujikanText">nisshoujikanText</div> -->
+
+  <div id="nisshoujikanChart" style="width:100%; height:500px;"></div>
+        
+</div>
+
+
+ </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+  <!-- import script -->
+  <script type="text/javascript" src="./home.js"></script>
+  
+  <script type="text/javascript" src="./weekGraph.js"></script>
+  <script type="text/javascript" src="./graph.js"></script>
+  <script type="text/javascript" src="./monthGraph.js"></script>
+  <script type="text/javascript" src="./3monthGraph.js"></script>
+  <script type="text/javascript" src="./sekisan.js"></script>
+  <script type="text/javascript" src="./nisshoujikan.js"></script>
+
+  </body>
+</html>

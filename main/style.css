@@ -1,0 +1,109 @@
+body {
+	padding: 5px;
+	margin: 10px;
+	text-align: center;
+	align-items: center;
+	align-content: center;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+#calendar {
+	/*float: left;*/
+}
+
+#connect {
+	/*float: right;*/
+}
+
+#wrapper {
+	padding: 10px;
+	align-content: center;
+	text-align: center;
+	align-items: center;
+}
+
+#fanChart {
+	position: relative;
+	align-content: center;
+	text-align: center;
+	align-items: center;
+}
+
+#shoudoChart, #ameChart, #mistChart, #ondoChart, #housachiChart,#fanChartTable {
+	margin: 5px;
+border:1px solid #708090;
+
+	/* box-shadow */
+box-shadow:0px 0px 0px 0px #708090;
+-moz-box-shadow:0px 0px 0px 0px #708090;
+-webkit-box-shadow:0px 0px 0px 0px #708090;
+
+
+}
+
+
+#week_shoudoChart, #week_ameChart, #week_mistChart, #week_ondoChart,#week_housachiChart,#fanChartTable {
+	margin: 5px;
+border:1px solid #708090;
+
+	/* box-shadow */
+box-shadow:0px 0px 0px 0px #708090;
+-moz-box-shadow:0px 0px 0px 0px #708090;
+-webkit-box-shadow:0px 0px 0px 0px #708090;
+
+
+}
+
+
+#month_shoudoChart, #month_ameChart, #month_mistChart, #month_ondoChart,#month_housachiChart,#fanChartTable {
+	margin: 5px;
+border:1px solid #708090;
+
+	/* box-shadow */
+box-shadow:0px 0px 0px 0px #708090;
+-moz-box-shadow:0px 0px 0px 0px #708090;
+-webkit-box-shadow:0px 0px 0px 0px #708090;
+
+
+}
+
+
+#threemonths_shoudoChart, #threemonths_ameChart, #threemonths_mistChart, #threemonths_ondoChart,#threemonths_housachiChart,#fanChartTable {
+	margin: 5px;
+border:1px solid #708090;
+
+	/* box-shadow */
+box-shadow:0px 0px 0px 0px #708090;
+-moz-box-shadow:0px 0px 0px 0px #708090;
+-webkit-box-shadow:0px 0px 0px 0px #708090;
+
+
+}
+
+

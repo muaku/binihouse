@@ -1,0 +1,24 @@
+{
+  "name": "main",
+  "version": "0.0.1",
+  "description": "serial electron",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.6.10",
+    "highcharts": "^5.0.12",
+    "io.js": "0.0.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1",
+    "serialport": "^4.0.7",
+    "socket.io": "^2.0.2",
+    "socket.io-client": "^2.0.2"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.5.11"
+  }
+}
