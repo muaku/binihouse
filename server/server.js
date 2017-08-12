@@ -72,6 +72,8 @@ io.sockets.on('connection', function(socket) {
 
 });
 
+// function that trigger every minute to check time for 00,10,20,..,50
+
 
 //
 var openPort = function(portNumber){
@@ -142,9 +144,7 @@ var serialportEvent = function(){
 	});
 }
 
-// get all open port
-
-	
+// get all open port	
 var portListEmitter = function(){
 	var portsNumber = []
 	SerialPort.list(function(err,  openPorts){

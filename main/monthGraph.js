@@ -43,7 +43,30 @@ var month_shoudo = [],
 
   // show date on screen
   $("#monthText").html(fromDate + " - " + moment().format("YYYY/MM/DD"))
-  // Reset all data before showing new graph
+
+  requestAndShowMonthGraph(dateObject)
+
+ })
+
+
+ // month_kousin button
+ $("#month_kousin").click(() => {
+    var toDate = moment($("#month_todate").val()).add(1, "days").format("YYYY/MM/DD")
+    var fromDate = moment($("#month_todate").val()).subtract(1, "months").format("YYYY/MM/DD")
+    var dateObject = { "fromDate": fromDate, "toDate":toDate}
+
+    $("#monthText").html(fromDate + " - " + moment($("#month_todate").val()).format("YYYY/MM/DD"))
+
+    console.log("dateObject: ", dateObject)
+
+    //
+    requestAndShowMonthGraph(dateObject)
+ })
+
+
+ //
+ var requestAndShowMonthGraph = (dateObject) => {
+    // Reset all data before showing new graph
   month_resetData()
 
   //Post: get tenMin data by date from user
@@ -80,7 +103,8 @@ var month_shoudo = [],
 
   })
 
- })
+ }
+
 
  // Reset data
  var month_resetData = function(){

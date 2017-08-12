@@ -34,7 +34,8 @@ var week_shoudo = [],
 
 
   // GET last week date using moment.js
-  var fromDate = moment().subtract(7, "days").format("YYYY/MM/DD")
+  // subtract 6 coz include start and end date
+  var fromDate = moment().subtract(6, "days").format("YYYY/MM/DD")
   var dateObject = { "fromDate": fromDate, "toDate":toDate}
 
   console.log("dateObject: ", dateObject)
@@ -52,10 +53,11 @@ var week_shoudo = [],
  //
  $("#week_kousin").click(() => {
     var toDate = moment($("#week_todate").val()).add(1, "days").format("YYYY/MM/DD")
-    var fromDate = moment(toDate).subtract(8, "days").format("YYYY/MM/DD")
-
+    var fromDate = moment($("#week_todate").val()).subtract(6, "days").format("YYYY/MM/DD")
     var dateObject = { "fromDate": fromDate, "toDate":toDate}
+    
 
+    $("#weekText").html(fromDate + " - " + moment($("#week_todate").val()).format("YYYY/MM/DD"))
     console.log("dateObject: ", dateObject)
 
 

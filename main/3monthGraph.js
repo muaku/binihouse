@@ -43,7 +43,31 @@ var threemonths_shoudo = [],
 
   // show date on screen
   $("#threemonthsText").html(fromDate + " - " + moment().format("YYYY/MM/DD"))
-  // Reset all data before showing new graph
+    //update graph
+  requestAndShowThreeMonthGraph(dateObject)
+
+ })
+
+
+ //
+ // week_kousin button
+ $("#threemonth_kousin").click(() => {
+    var toDate = moment($("#threemonth_todate").val()).add(1, "days").format("YYYY/MM/DD")
+    var fromDate = moment($("#threemonth_todate").val()).subtract(3, "months").format("YYYY/MM/DD")
+    var dateObject = { "fromDate": fromDate, "toDate":toDate}
+
+    $("#threemonthsText").html(fromDate + " - " + moment($("#threemonth_todate").val()).format("YYYY/MM/DD"))
+
+    console.log("dateObject: ", dateObject)
+
+    //
+    requestAndShowThreeMonthGraph(dateObject)
+ })
+
+
+ //
+ var requestAndShowThreeMonthGraph = (dateObject) => {
+    // Reset all data before showing new graph
   threemonths_resetData()
 
   //Post: get tenMin data by date from user
@@ -80,7 +104,8 @@ var threemonths_shoudo = [],
 
   })
 
- })
+ }
+
 
  // Reset data
  var threemonths_resetData = function(){
