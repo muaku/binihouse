@@ -178,10 +178,15 @@ var month_shoudo = [],
           text: "ハウス内外温湿度"
        },
        xAxis: {
-          categories: month_hitsuke,
+          //categories: month_hitsuke,
           tickInterval: month_tickInterval, // when data has reach 6point then show Xaxis, 6point(10min per point => 1hour time stamp)
           //tickAmount: 24,
           labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
           }
        },
        yAxis: [{  // primary yAxis
@@ -298,9 +303,16 @@ var month_shoudoChart = function(month_shoudo){
          text: ""
      },
      xAxis: {
-       categories: month_hitsuke,
+       //categories: month_hitsuke,
        tickInterval: month_tickInterval, // 1hour
         //tickAmount: 24,
+        labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
        title: {
@@ -343,16 +355,16 @@ var month_housachiChart = function(month_housachi){
      }
      ,
      xAxis: {
-       categories: month_hitsuke,
+       //categories: month_hitsuke,
        tickInterval: month_tickInterval, // 1hour
         //tickAmount: 24,
-       // plotBands: {
-       //  from: 6,
-       //  to: 8,
-       //  zIndex: 0,
-       //  color: "green",
-       //  width: 1
-       // }
+       labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
      }
      ,
      yAxis: {
@@ -413,9 +425,16 @@ var month_housachiChart = function(month_housachi){
            text: ""
        },
        xAxis: {
-         categories: month_hitsuke,
+         //categories: month_hitsuke,
          tickInterval: month_tickInterval, // 1hour
          // tickAmount: 24,
+         labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -458,10 +477,17 @@ var month_housachiChart = function(month_housachi){
            text: "【ファン制御】"
        },
        xAxis: {
-         categories: month_hitsuke,
+         //categories: month_hitsuke,
          lineWidth: 0,
          tickInterval: month_tickInterval, // 1hour
-         visible: false   // make x axis invisible
+         visible: false,   // make x axis invisible
+         labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -503,10 +529,17 @@ var month_housachiChart = function(month_housachi){
            text: ""
        },
        xAxis: {
-         categories: month_hitsuke,
+         //categories: month_hitsuke,
          lineWidth: 0,
          tickInterval: month_tickInterval, // 1hour
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -548,10 +581,17 @@ var month_housachiChart = function(month_housachi){
            text: ""
        },
        xAxis: {
-         categories: month_hitsuke,
+         //categories: month_hitsuke,
          lineWidth: 0,
          tickInterval: month_tickInterval, // 1hour
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -593,8 +633,15 @@ var month_housachiChart = function(month_housachi){
            text: ""
        },
        xAxis: {
-         categories: month_hitsuke,
+         //categories: month_hitsuke,
          tickInterval: month_tickInterval, // 1hour
+         labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -638,8 +685,15 @@ var month_ameChart = function(month_ame){
          text: ""
      },
      xAxis: {
-       categories: month_hitsuke,
+       //categories: month_hitsuke,
        tickInterval: month_tickInterval, 
+       labels: {
+            // New added
+            formatter: function(){
+              return month_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
       title: {

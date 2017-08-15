@@ -180,10 +180,15 @@ var week_shoudo = [],
           text: "ハウス内外温湿度"
        },
        xAxis: {
-          categories: week_hitsuke,
+          //categories: week_hitsuke,
           tickInterval: week_tickInterval, //1day
           //tickAmount: 24,
           labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
           }
        },
        yAxis: [{  // primary yAxis
@@ -300,9 +305,16 @@ var week_shoudoChart = function(week_shoudo){
          text: ""
      },
      xAxis: {
-       categories: week_hitsuke,
+       //categories: week_hitsuke,
        tickInterval: week_tickInterval, // 1hour
         //tickAmount: 24,
+        labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
        title: {
@@ -345,16 +357,16 @@ var week_housachiChart = function(week_housachi){
      }
      ,
      xAxis: {
-       categories: week_hitsuke,
+       //categories: week_hitsuke,
        tickInterval: week_tickInterval, // 1hour
         //tickAmount: 24,
-       // plotBands: {
-       //  from: 6,
-       //  to: 8,
-       //  zIndex: 0,
-       //  color: "green",
-       //  width: 1
-       // }
+       labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
      }
      ,
      yAxis: {
@@ -415,8 +427,15 @@ var week_housachiChart = function(week_housachi){
            text: ""
        },
        xAxis: {
-         categories: week_hitsuke,
+         //categories: week_hitsuke,
          tickInterval: week_tickInterval, // 1hour
+         labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
           
        },
        yAxis: {
@@ -452,7 +471,7 @@ var week_housachiChart = function(week_housachi){
            },
        legend:{
         // layout: 'vertical',
-         //align: 'left',
+         //align: 'center',
         //enabled: true,
         //verticalAlign: "top"
        },
@@ -460,10 +479,17 @@ var week_housachiChart = function(week_housachi){
            text: "【ファン制御】"
        },
        xAxis: {
-         categories: week_hitsuke,
+         //categories: week_hitsuke,
          lineWidth: 0,
          tickInterval: week_tickInterval, // 1hour
-         visible: false   // make x axis invisible
+         visible: false,   // make x axis invisible
+         labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -505,10 +531,17 @@ var week_housachiChart = function(week_housachi){
            text: ""
        },
        xAxis: {
-         categories: week_hitsuke,
+         //categories: week_hitsuke,
          lineWidth: 0,
          tickInterval: week_tickInterval, // 1hour
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -550,11 +583,18 @@ var week_housachiChart = function(week_housachi){
            text: ""
        },
        xAxis: {
-         categories: week_hitsuke,
+         //categories: week_hitsuke,
          lineWidth: 0,
          tickInterval: week_tickInterval, // 1hour
          minTickInterval: 5000,
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -599,6 +639,13 @@ var week_housachiChart = function(week_housachi){
          categories: week_hitsuke,
          tickInterval: week_tickInterval, // 1hour
           //tickAmount: 24,
+          labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -642,9 +689,16 @@ var week_ameChart = function(week_ame){
          text: ""
      },
      xAxis: {
-       categories: week_hitsuke,
+       //categories: week_hitsuke,
        tickInterval: week_tickInterval, // 1hour
           //tickAmount: 24,
+        labels: {
+            // New added
+            formatter: function(){
+              return week_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
       title: {

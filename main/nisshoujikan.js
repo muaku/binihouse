@@ -21,6 +21,8 @@ $("#nisshoujikanNav").click(function(){
   $("#nisshou_todate").val(moment().format("YYYY-MM-DD"))
   
   var dateObject = { "fromDate": fromDate, "toDate":toDate}
+  console.log("dateObject: ", dateObject)
+
   requestAndShowNishoudoGraph(dateObject)
 
 })
@@ -115,8 +117,14 @@ var nishoudoJikaChart = function(shoudoJikan, xUnit){
          text: ""
      },
      xAxis: {
-       categories: xUnit,
-       tickInterval: 1
+       //categories: xUnit,
+       tickInterval: 1,
+       labels: {
+          formatter: function(){
+            return xUnit[this.value]
+        },
+        align: "center",
+      }
      },
      yAxis: {
        title: {

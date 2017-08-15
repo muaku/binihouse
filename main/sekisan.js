@@ -117,16 +117,15 @@ var sekisanOndoChart = function(inOndo, xUnit){
          text: ""
      },
      xAxis: {
-       categories: xUnit,
-      // labels: {
-      //     // New added
-      //     formatter: function(){
-      //       return xUnit[this.value]
-      //   },
-      //   align: "right",
-      //   rotation: -45
-      // },
-       tickInterval: 1
+       //categories: xUnit,
+      tickInterval: 1,
+      labels: {
+          formatter: function(){
+            return xUnit[this.value]
+        },
+        align: "center",
+      }
+       
      },
      yAxis: {
        title: {

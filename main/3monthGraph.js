@@ -180,10 +180,15 @@ var threemonths_shoudo = [],
           text: "ハウス内外温湿度"
        },
        xAxis: {
-          categories: threemonths_hitsuke,
+          //categories: threemonths_hitsuke,
           tickInterval: threemonths_tickInterval, //13 point + 1 -> 7day tick 
           //tickAmount: 24,
           labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
           }
        },
        yAxis: [{  // primary yAxis
@@ -300,9 +305,16 @@ var threemonths_shoudoChart = function(threemonths_shoudo){
          text: ""
      },
      xAxis: {
-       categories: threemonths_hitsuke,
+       //categories: threemonths_hitsuke,
        tickInterval: threemonths_tickInterval, // 1hour
         //tickAmount: 24,
+        labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
        title: {
@@ -345,15 +357,15 @@ var threemonths_housachiChart = function(threemonths_housachi){
      }
      ,
      xAxis: {
-       categories: threemonths_hitsuke,
+       //categories: threemonths_hitsuke,
        tickInterval: threemonths_tickInterval, // 1hour
-       // plotBands: {
-       //  from: 6,
-       //  to: 8,
-       //  zIndex: 0,
-       //  color: "green",
-       //  width: 1
-       // }
+       labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
      }
      ,
      yAxis: {
@@ -414,9 +426,16 @@ var threemonths_housachiChart = function(threemonths_housachi){
            text: ""
        },
        xAxis: {
-         categories: threemonths_hitsuke,
+         //categories: threemonths_hitsuke,
          tickInterval: threemonths_tickInterval, // 1hour
           // tickAmount: 24,
+          labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -459,10 +478,17 @@ var threemonths_housachiChart = function(threemonths_housachi){
            text: "【ファン制御】"
        },
        xAxis: {
-         categories: threemonths_hitsuke,
+         //categories: threemonths_hitsuke,
          lineWidth: 0,
          tickInterval: threemonths_tickInterval, // 1hour
-         visible: false   // make x axis invisible
+         visible: false,   // make x axis invisible
+         labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -504,10 +530,17 @@ var threemonths_housachiChart = function(threemonths_housachi){
            text: ""
        },
        xAxis: {
-         categories: threemonths_hitsuke,
+         //categories: threemonths_hitsuke,
          lineWidth: 0,
          tickInterval: threemonths_tickInterval, // 2days
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -549,11 +582,18 @@ var threemonths_housachiChart = function(threemonths_housachi){
            text: ""
        },
        xAxis: {
-         categories: threemonths_hitsuke,
+         //categories: threemonths_hitsuke,
          lineWidth: 0,
          tickInterval: threemonths_tickInterval, // 1hour
          minTickInterval: 5000,
-         visible: false
+         visible: false,
+         labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -595,8 +635,15 @@ var threemonths_housachiChart = function(threemonths_housachi){
            text: ""
        },
        xAxis: {
-         categories: threemonths_hitsuke,
+         //categories: threemonths_hitsuke,
          tickInterval: threemonths_tickInterval, // 1hour
+         labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
        },
        yAxis: {
          title: {
@@ -640,8 +687,15 @@ var threemonths_ameChart = function(threemonths_ame){
          text: ""
      },
      xAxis: {
-       categories: threemonths_hitsuke,
+       //categories: threemonths_hitsuke,
        tickInterval: threemonths_tickInterval, // 14point -> 7day (1point = 12hour )
+       labels: {
+            // New added
+            formatter: function(){
+              return threemonths_hitsuke[this.value]
+            },
+            align: "center",
+          }
      },
      yAxis: {
       title: {

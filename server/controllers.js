@@ -96,7 +96,7 @@ exports.get1hourAndCal6hourAvgForMonthData = (req, res) => {
 
 		// IF: has data, then cal 6hour AVG
 		// START: AVG 6hours
-		console.log("DATA: ", data)
+		//console.log("DATA: ", data)
 		var len = data.length
 		var g = Math.ceil(len / countFor6hour)
 		console.log("len: ", len)

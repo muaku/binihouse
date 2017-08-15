@@ -385,13 +385,20 @@ var shoudoChart = function(shoudo){
             },
             align: "right",
             rotation: -45
-          }
+          }, 
        },
      yAxis: {
        title: {
          text: "lux"
        }
      },
+    tooltip: {
+        formatter: function() {
+          var s = "照度: " + this.y + " lux"
+          return s
+        },
+          shared: true
+    },
      series: [{
          name:"照度",
          data: shoudo,
