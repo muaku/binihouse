@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cron": "^1.2.1",
     "csv": "^1.1.1",
     "csv-parser": "^1.11.0",
     "csv-write-stream": "^2.0.0",

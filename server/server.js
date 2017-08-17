@@ -13,12 +13,13 @@ const controllers = require("./controllers")
 const tenMinAvg = require("./tenMinAvg")
 var csvWriter = require("./csvWriterModule")
 var fanStatus = require("./FanStatus")
+var cronjob = require("./cronjob")
 
 var port
 var tenminAvgCount = 10	// tenMin Avg (10 number of minute data)
 var hourAvgCount = 6 // 1hour = 6 times of 10min
 //var mins = 0
-var tenmins = 0
+//var tenmins = 0
 var ft = true
 
 csvWriter.createFile()	// create csv file
@@ -38,7 +39,11 @@ app.use("/", routes)
 
 
 // ------------------------------------
-
+/*
+* start cronjob right after the server started
+*/
+cronjob.everyTenminJob.start()
+cronjob.every1hourJob.start()
 
 
 // Socket io , listen to start and stop button
@@ -95,7 +100,7 @@ var closePort = function(cb){
 
 
 var serialportEvent = function(){
-	var mins = 0
+	//var mins = 0
 	// SerialPort
 	port.on('open', function() {
 	  console.log("port is open")
@@ -120,25 +125,23 @@ var serialportEvent = function(){
 
 	  csvWriter.write(doneData)		// write to csv file
 
-	  mins++
-	  console.log("mins: ", mins)
 	  controllers.storeMinData(doneData, function(err, success){	// save minute data to DB
 	  	if(err) throw err;
 	  	console.log("Stored 1min")
-	  	if((mins % tenminAvgCount) === 0) {
-		  	console.log("IS TEN MIN NOW")
-		  	calAndSaveTenMinAvgData(tenminAvgCount)		// save ten minute data to DB
-		  	// reset tenMin
-		  	mins = 0
-		  	tenmins ++	// Reach 10min
-		  	console.log("tenmins: ", tenmins)
-		  	// If time reach 1hour, its mean 10min data has reach 6times
-		  	if((tenmins % hourAvgCount) === 0 ) {
-		  		console.log("IS 1hour NOQ")
-		  		calAndSave1hourAvgData(hourAvgCount)
-		  		tenmins = 0
-		  	}
-		  }
+	  	// if((mins % tenminAvgCount) === 0) {
+		//   	console.log("IS TEN MIN NOW")
+		//   	calAndSaveTenMinAvgData(tenminAvgCount)		// save ten minute data to DB
+		//   	// reset tenMin
+		//   	mins = 0
+		//   	tenmins ++	// Reach 10min
+		//   	console.log("tenmins: ", tenmins)
+		//   	// If time reach 1hour, its mean 10min data has reach 6times
+		//   	if((tenmins % hourAvgCount) === 0 ) {
+		//   		console.log("IS 1hour NOQ")
+		//   		calAndSave1hourAvgData(hourAvgCount)
+		//   		tenmins = 0
+		//   	}
+		//   }
 	  })		
 
 	});
@@ -157,25 +160,25 @@ var portListEmitter = function(){
 } 
 
 
-// get minDatas and cal the avg of its, then save it to dataTenMinCollection
-var calAndSaveTenMinAvgData = function(avgCount){
-	tenMinAvg.getMinAndSaveTenMinAvgData(avgCount, function(err, success){
-		if(err) {console.log(err)}
-		else {
-			console.log(success)
-		}
-	})
-}
+// // get minDatas and cal the avg of its, then save it to dataTenMinCollection
+// var calAndSaveTenMinAvgData = function(avgCount){
+// 	tenMinAvg.getMinAndSaveTenMinAvgData(avgCount, function(err, success){
+// 		if(err) {console.log(err)}
+// 		else {
+// 			console.log(success)
+// 		}
+// 	})
+// }
 
-// GET tenmin data and cal the avg of it, then save it to data10minCollection
-var calAndSave1hourAvgData = function(avgCount){
-	tenMinAvg.getTenMinAndSave1hourAvgData(avgCount, function(err, success){
-		if(err) {console.log(err)}
-		else {
-			console.log(success)
-		}
-	})
-}
+// // GET tenmin data and cal the avg of it, then save it to data10minCollection
+// var calAndSave1hourAvgData = function(avgCount){
+// 	tenMinAvg.getTenMinAndSave1hourAvgData(avgCount, function(err, success){
+// 		if(err) {console.log(err)}
+// 		else {
+// 			console.log(success)
+// 		}
+// 	})
+// }
 
 
 
