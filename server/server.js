@@ -13,13 +13,12 @@ const controllers = require("./controllers")
 const tenMinAvg = require("./tenMinAvg")
 var csvWriter = require("./csvWriterModule")
 var fanStatus = require("./FanStatus")
+var katen_biniiru_status = require("./katen_biniiru_status")
 var cronjob = require("./cronjob")
 
 var port
 var tenminAvgCount = 10	// tenMin Avg (10 number of minute data)
 var hourAvgCount = 6 // 1hour = 6 times of 10min
-//var mins = 0
-//var tenmins = 0
 var ft = true
 
 csvWriter.createFile()	// create csv file
@@ -38,7 +37,6 @@ app.use(bodyParser.json())
 app.use("/", routes)
 
 
-// ------------------------------------
 /*
 * start cronjob right after the server started
 */
@@ -122,27 +120,14 @@ var serialportEvent = function(){
 	  var doneData = returnSeparatedDataInJson(data)
 	  console.log(doneData)
 	  //io.sockets.emit('msg', doneData);   // Emit realTime data to frontEnd]
-
-	  csvWriter.write(doneData)		// write to csv file
-
-	  controllers.storeMinData(doneData, function(err, success){	// save minute data to DB
-	  	if(err) throw err;
-	  	console.log("Stored 1min")
-	  	// if((mins % tenminAvgCount) === 0) {
-		//   	console.log("IS TEN MIN NOW")
-		//   	calAndSaveTenMinAvgData(tenminAvgCount)		// save ten minute data to DB
-		//   	// reset tenMin
-		//   	mins = 0
-		//   	tenmins ++	// Reach 10min
-		//   	console.log("tenmins: ", tenmins)
-		//   	// If time reach 1hour, its mean 10min data has reach 6times
-		//   	if((tenmins % hourAvgCount) === 0 ) {
-		//   		console.log("IS 1hour NOQ")
-		//   		calAndSave1hourAvgData(hourAvgCount)
-		//   		tenmins = 0
-		//   	}
-		//   }
-	  })		
+	
+	  if(doneData != "undefined") {	// to prevent error
+		csvWriter.write(doneData)		// write to csv file
+		controllers.storeMinData(doneData, function(err, success){	// save minute data to DB
+			if(err) throw err;
+			console.log("Stored 1min")
+		})
+	  }	
 
 	});
 }
@@ -210,7 +195,6 @@ var returnSeparatedDataInArray = function(data){
 					break
 				case 1:
 					// 0:照度
-					console.log(typeof(dataSplitterByCuron(commaSplitData[i])[1]))
 					curonSplitData = parseInt(dataSplitterByCuron(commaSplitData[i])[1])
 					break
 				case 2:
@@ -294,7 +278,10 @@ var returnSeparatedDataInArray = function(data){
 
 
 			}
-
+			// Check if curonSplitData is "undefined", empty, "NaN" or not, if yes then return "undefined"
+			if(typeof(curonSplitData) == "undefined" || _.isEmpty(curonSplitData) || curonSplitData == "" || curonSplitData == "NaN") {
+				return "undefined"
+			}
 			separatedRecvData.push(curonSplitData)
 		}
 		 console.log("separatedRecvData: ", separatedRecvData)
@@ -328,9 +315,18 @@ var separatedDataInJson = function(splittedAllData){
 	var fan4 = parseInt(fansState.fan4)
 	// End fans status
 	var yobi3 = splittedAllData[16]
+
 	var katen = splittedAllData[17]
 	var biniiru = splittedAllData[18]
 	var tenjoukaten = splittedAllData[19]
+	// カーテン・ビニールステータス
+	var leftKaten = katen_biniiru_status(katen).leftKaten,
+	var rightKaten = katen_biniiru_status(katen).rightKaten,
+	var leftBiniiru = katen_biniiru_status(biniiru).leftBiniiru,
+	var rightBiniiru = katen_biniiru_status(biniiru).rightBiniiru,
+	var leftTenjouKaten = katen_biniiru_status(tenjoukaten).leftTenjouKaten,
+	var rightTenjouKaten = katen_biniiru_status(tenjoukaten).rightTenjouKaten,
+
 	var checksum = splittedAllData[20]
 
 	return {"serNum": serNum,"shoudo": outsideNishouData, "outOndo": outsideOndoData,
@@ -339,20 +335,22 @@ var separatedDataInJson = function(splittedAllData){
 		   "houshasen": insideHoshakeiData, "hitsuke": hitsuke,
 		   "jikoku": jikoku, "housachi": housachi, "tar_housachi": tar_housachi,
 		   "mist": mist, "fan1": fan1, "fan2": fan2, "fan3": fan3, 
-		   "fan4": fan4,"yobi1": yobi1,"yobi3": yobi3, "katen": katen, "biniiru": biniiru,
-		   "tenjoukaten": tenjoukaten, "checksum": checksum
+		   "fan4": fan4,"yobi1": yobi1,"yobi3": yobi3, "leftKaten": leftKaten,"rightKaten": rightKaten,
+		   "leftBiniiru": leftBiniiru,"rightBiniiru": rightBiniiru,
+		   "leftTenjouKaten": leftTenjouKaten, "rightTenjouKaten": rightTenjouKaten,
+		   "checksum": checksum
 		   }
-
 }
 
 // return data in json style
 var returnSeparatedDataInJson = function(data){
 	var dataInArray = returnSeparatedDataInArray(data)
-	if (!_.isEmpty(dataInArray)) {
+	if (!_.isEmpty(dataInArray) && dataInArray != "undefined") {
 		var dataInJson = separatedDataInJson(dataInArray)
 		return dataInJson
+	} else {
+		return "undefined"
 	}
-
 }
 
 

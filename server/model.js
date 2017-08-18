@@ -21,9 +21,15 @@ const dataMinSchema = new Schema({
 	fan4: Number,
 	yobi1: String,
 	yobi3: String,
-	katen: String,
-	biniiru: String,
-	tenjoukaten: String,
+	leftKaten: Number,
+	rightKaten: Number,
+	leftBiniiru: Number,
+	rightBiniiru: Number,
+	leftTenjouKaten: Number,
+	rightTenjouKaten: Number,
+	// katen: String,
+	// biniiru: String,
+	// tenjoukaten: String,
 	checksum: String,
 	created_at: {type: Date, default: Date.now}
 })

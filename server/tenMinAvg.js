@@ -6,7 +6,8 @@ const dataMinCollection = require("./model").dataMinCollection
 exports.getMinDataByJikoku = function(onHitsuke,fromJikoku, toJikoku, cb){
 	var shoudo = 0,outOndo = 0,outSitsudo = 0,ame = 0,inOndo = 0,inSitsudo = 0,
 	houshasen = 0,hitsuke = "",jikoku = "",housachi = 0,tar_housachi = 0,mist = 0,
-	fan1 = 0,fan2 = 0,fan3 = 0,fan4 = 0
+	fan1 = 0,fan2 = 0,fan3 = 0,fan4 = 0,leftKaten = 0,rightKaten = 0,leftBiniiru = 0,
+	rightBiniiru = 0,leftTenjouKaten = 0,rightTenjouKaten = 0
 
 	var shoudoAvg = 0,outOndoAvg = 0,outSitsudoAvg = 0,ameAvg = 0,inOndoAvg = 0,
 	inSitsudoAvg = 0,houshasenAvg = 0,housachiAvg = 0,tar_housachiAvg = 0,
@@ -42,7 +43,13 @@ exports.getMinDataByJikoku = function(onHitsuke,fromJikoku, toJikoku, cb){
 					fan1: 0,
 					fan2: 0,
 					fan3: 0,
-					fan4: 0
+					fan4: 0,
+					leftKaten: 0,
+					rightKaten: 0,
+					leftBiniiru: 0,
+					rightBiniiru: 0,
+					leftTenjouKaten: 0,
+					rightTenjouKaten: 0
 				}
 
 				//return data
@@ -71,9 +78,16 @@ exports.getMinDataByJikoku = function(onHitsuke,fromJikoku, toJikoku, cb){
 					fan2 += data[i].fan2
 					fan3 += data[i].fan3
 					fan4 += data[i].fan4
-					if(i === 0) {	// apply hitsuke & jikoku only one time
+					// 以下のpropsは平均を取らない(その時点のデータをとる)
+					if(i === dataCount-1) {	
 						hitsuke = onHitsuke
 						jikoku = fromJikoku
+						leftKaten = data[i].leftKaten
+						rightKaten = data[i].rightKaten
+						leftBiniiru = data[i].leftBiniiru
+						rightBiniiru = data[i].rightBiniiru
+						leftTenjouKaten = data[i].leftTenjouKaten
+						rightTenjouKaten = data[i].rightTenjouKaten
 					}
 				}
 
@@ -94,7 +108,13 @@ exports.getMinDataByJikoku = function(onHitsuke,fromJikoku, toJikoku, cb){
 					fan1: (fan1 / dataCount) < 0.3 ? 0 : 1,
 					fan2: (fan2 / dataCount) < 0.3 ? 0 : 1,
 					fan3: (fan3 / dataCount) < 0.3 ? 0 : 1,
-					fan4: (fan4 / dataCount) < 0.3 ? 0 : 1
+					fan4: (fan4 / dataCount) < 0.3 ? 0 : 1,
+					leftKaten: leftKaten,
+					rightKaten: rightKaten,
+					leftBiniiru: leftBiniiru,
+					rightBiniiru: rightBiniiru,
+					leftTenjouKaten: leftTenjouKaten,
+					rightTenjouKaten: rightTenjouKaten
 				}
 
 				console.log("returnAvgData: ", returnAvgData)

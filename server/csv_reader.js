@@ -12,8 +12,6 @@ var mins = 0
 const dataMinCollection = require("./model").dataMinCollection
 const dataTenMinCollection = require("./model").dataTenMinCollection
 
-
-
 fs.createReadStream(__dirname + "/testdata.csv")
 	.pipe(csv())
 	.on("data", function(data) {

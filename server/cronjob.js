@@ -22,8 +22,7 @@ module.exports.everyTenminJob = new CronJob({
   },
   start: false, // start the job right now
   timeZone: 'Asia/Tokyo'   // time zone
-});
-//everyTenminJob.start();
+})
 
 // When cron was triggered, then query 1min data and count the AVG of 10min
 var tenminTriggerCron = (onHitsuke, hour, min) => {

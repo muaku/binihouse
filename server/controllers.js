@@ -546,10 +546,13 @@ exports.storeMinData = function(data, cb){
 		fan4: data.fan4,
 		yobi1: data.yobi1,
 		yobi3: data.yobi3,
-		katen: data.katen,
-		biniiru: data.biniiru,
-		tenjoukaten: data.tenjoukaten,
-		checksum: data.checksum
+		leftKaten: data.leftKaten,
+		rightKaten: data.rightKaten,
+		leftBiniiru: data.leftBiniiru,
+		rightBiniiru: data.rightBiniiru,
+		leftTenjouKaten: data.leftTenjouKaten,
+		rightTenjouKaten: data.rightTenjouKaten,
+		checksum: data.checksum,
 	})
 	dataOneMin.save(function(err, success){
 		if (err) return cb(err, null);
@@ -580,6 +583,12 @@ exports.storeTenMinData = function(data, cb){
 		fan4: data.fan4,
 		yobi1: data.yobi1,
 		yobi3: data.yobi3,
+		leftKaten: data.leftKaten,
+		rightKaten: data.rightKaten,
+		leftBiniiru: data.leftBiniiru,
+		rightBiniiru: data.rightBiniiru,
+		leftTenjouKaten: data.leftTenjouKaten,
+		rightTenjouKaten: data.rightTenjouKaten,
 		checksum: data.checksum
 	})
 	dataTenMin.save(function(err, success){
@@ -612,6 +621,12 @@ exports.store1hourData = (data, cb) => {
 		fan4: data.fan4,
 		yobi1: data.yobi1,
 		yobi3: data.yobi3,
+		leftKaten: data.leftKaten,
+		rightKaten: data.rightKaten,
+		leftBiniiru: data.leftBiniiru,
+		rightBiniiru: data.rightBiniiru,
+		leftTenjouKaten: data.leftTenjouKaten,
+		rightTenjouKaten: data.rightTenjouKaten,
 		checksum: data.checksum
 	})
 	hourData.save(function(err, success){
